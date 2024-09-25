@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ES6",
+    "jsx": "react-jsx",               // Transpile JSX to React.createElement
+    "declaration": true,          // Generate .d.ts files
+    "declarationDir": "./dist",  // Output types here
+    "outDir": "./dist",           // Output JavaScript here
+    "moduleResolution": "node",   // Use Node.js-style module resolution
+    "esModuleInterop": true,      // Interop for importing CommonJS modules
+    "skipLibCheck": true,         // Skip type checks of library files
+    "strict": true,               // Enable strict type-checking
+    "sourceMap": true             // Optional: Generate source maps
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
