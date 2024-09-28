@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode, useState } from 'react';
 import './styles.css';
 
 interface SwapneshiocarouselProps {
@@ -6,6 +6,7 @@ interface SwapneshiocarouselProps {
   scrollSpeed?: number;
   height?: string;
   gap?: string;
+  scrollAmount?: number;
 }
 
 const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
@@ -13,29 +14,23 @@ const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
   scrollSpeed = 1,
   height = 'auto',
   gap = '20px',
+  scrollAmount=200
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const carousel = carouselRef.current;
-    let isScrolling = false;
-       
-
     if (!carousel) return;
 
     const scroll = () => {
-      if (!carousel || isScrolling) return;
+      if (!carousel) return;
 
-      const scrollAmount = 120;
-      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
-      if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
-        // Reset the scroll position to start to create the infinite loop effect
-        isScrolling = true;
-        carousel.scrollTo({ left: 0, behavior: 'auto' });
+      if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 2) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
         setTimeout(() => {
-          isScrolling = false;
-        }, 50); // Prevent instant reset issues
+          carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }, 900);
       }
     };
 
@@ -53,14 +48,14 @@ const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
         display: 'flex',
         overflowX: 'scroll',
         scrollBehavior: 'smooth',
-        whiteSpace: 'nowrap', 
+        whiteSpace: 'nowrap',
       }}
     >
       {React.Children.map(children, (child, index) => (
         <div
           key={index}
           className="swapneshiocarousel-slides"
-          style={{ marginRight: gap, flexShrink: 0 }} // Ensure slides don't shrink
+          style={{ marginRight: gap, flexShrink: 0 }}
         >
           {child}
         </div>

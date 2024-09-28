@@ -5,6 +5,7 @@ interface SwapneshiocarouselProps {
     scrollSpeed?: number;
     height?: string;
     gap?: string;
+    scrollAmount?: number;
 }
 declare const Swapneshiocarousel: React.FC<SwapneshiocarouselProps>;
 export default Swapneshiocarousel;
