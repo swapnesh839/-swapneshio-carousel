@@ -1,0 +1,22 @@
+.swapneshiocarousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.swapneshiocarousel-wrapper {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: hidden;
+  padding: 0px 12px;
+}
+
+.swapneshiocarousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.swapneshiocarousel-slides {
+  flex: 0 0 300px;
+  margin: 8px;
+  scroll-snap-align: start;
+}
