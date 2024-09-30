@@ -18,6 +18,5 @@
 
 .swapneshiocarousel-slides {
   flex: 0 0 300px;
-  margin: 8px;
   scroll-snap-align: start;
 }

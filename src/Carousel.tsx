@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useRef, ReactNode, useState } from 'react';
 import './styles.css';
 
@@ -7,13 +8,15 @@ interface SwapneshiocarouselProps {
   height?: string;
   gap?: string;
   scrollAmount?: number;
+  slideswidth?:string | number | undefined
 }
 
-const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
+const carousel: React.FC<SwapneshiocarouselProps> = ({
   children,
   scrollSpeed = 1,
   height = 'auto',
   gap = '20px',
+  slideswidth="auto",
   scrollAmount=200
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -44,7 +47,6 @@ const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
       className="swapneshiocarousel-wrapper"
       ref={carouselRef}
       style={{
-        height,
         display: 'flex',
         overflowX: 'scroll',
         scrollBehavior: 'smooth',
@@ -55,7 +57,7 @@ const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
         <div
           key={index}
           className="swapneshiocarousel-slides"
-          style={{ marginRight: gap, flexShrink: 0 }}
+          style={{height, marginRight: gap, flexBasis:slideswidth}}
         >
           {child}
         </div>
@@ -63,5 +65,4 @@ const Swapneshiocarousel: React.FC<SwapneshiocarouselProps> = ({
     </div>
   );
 };
-
-export default Swapneshiocarousel;
+export default carousel;
