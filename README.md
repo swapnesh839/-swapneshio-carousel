@@ -37,24 +37,24 @@ OR
 
 ## Usage
 
-Wrap your header or navigation component within the `StickyHeader` component to make it sticky.
+pass multiple jsx/img/card as a child to the `Carousel` component to make it work.
 
 ```jsx
 import React from 'react';
-import carousel from '@swapneshio/carousel';
+import Carousel from '@swapneshio/carousel';
 const App = () => {
   const styles = {
     // Your custom styles here
   };
 
   return (
-      <carousel >
+      <Carousel >
         {/* add multiple img/logo/card here */}
         {/* like
          <Card1/>
          <Card2/>
          <Card3/> */}
-      </carousel>
+      </Carousel>
   );
 };
 
